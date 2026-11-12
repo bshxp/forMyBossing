@@ -1,0 +1,423 @@
+:root {
+  --sakura: #ffb7c5;
+  --sakura-deep: #f08ca4;
+  --sakura-soft: rgba(255, 183, 197, 0.14);
+  --gold: #d4af37;
+  --gold-light: #f3dc8c;
+  --gold-border: rgba(212, 175, 55, 0.4);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+/* Black Theme (Default) */
+[data-theme="dark"] {
+  --bg: #0b0b0d;
+  --surface: #141418;
+  --surface-elevated: #1c1c22;
+  --text: #ffffff;
+  --text-muted: #b8b5bd;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+}
+
+/* White Theme */
+[data-theme="light"] {
+  --bg: #fcfbfb;
+  --surface: #ffffff;
+  --surface-elevated: #fff6f8;
+  --text: #111114;
+  --text-muted: #5a5660;
+  --shadow: 0 16px 40px rgba(17, 17, 20, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#petals-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top Navigation */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold-border);
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+.controls {
+  display: flex;
+  gap: 0.6rem;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--gold-border);
+}
+
+/* Layout */
+.container {
+  position: relative;
+  z-index: 5;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  color: var(--sakura);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4.1rem);
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 1rem;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--sakura) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  max-width: 520px;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tulip Bouquet Animation */
+.bouquet-wrapper {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 24px;
+  transition: transform 0.3s ease;
+}
+
+.bouquet-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.tulip-bouquet {
+  filter: drop-shadow(0 12px 24px rgba(255, 183, 197, 0.25));
+}
+
+.sway-slow {
+  transform-origin: 130px 220px;
+  animation: sway 5s ease-in-out infinite;
+}
+
+.sway-left {
+  animation: swayLeft 4.2s ease-in-out infinite;
+}
+
+.sway-right {
+  animation: swayRight 4.6s ease-in-out infinite;
+}
+
+.sway-center {
+  animation: swayCenter 4s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+@keyframes swayLeft {
+  0%, 100% { transform: translate(75px, 92px) rotate(-20deg); }
+  50% { transform: translate(75px, 92px) rotate(-14deg); }
+}
+
+@keyframes swayRight {
+  0%, 100% { transform: translate(185px, 92px) rotate(15deg); }
+  50% { transform: translate(185px, 92px) rotate(21deg); }
+}
+
+@keyframes swayCenter {
+  0%, 100% { transform: translate(130px, 74px) rotate(-2deg); }
+  50% { transform: translate(130px, 74px) rotate(2deg); }
+}
+
+.tap-hint {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+/* Cards & Counter */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--gold-border);
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.time-box {
+  background: var(--surface-elevated);
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 1rem 0.5rem;
+}
+
+.time-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--sakura);
+  line-height: 1.1;
+}
+
+.time-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+.start-date-caption {
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+/* Six Tulips Grid */
+.tulip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+
+.tulip-card {
+  background: var(--surface);
+  border: 1px solid var(--gold-border);
+  border-radius: 20px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tulip-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sakura);
+  box-shadow: 0 12px 30px rgba(255, 183, 197, 0.18);
+}
+
+.tulip-icon {
+  font-size: 2.2rem;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-bottom: 0.5rem;
+}
+
+.tulip-card.bloomed .tulip-icon {
+  transform: scale(1.25) rotate(8deg);
+}
+
+.tulip-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.tulip-note {
+  font-size: 0.9rem;
+  color: var(--text);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.tulip-card.bloomed .tulip-note {
+  max-height: 140px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+.tulip-tap-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.tulip-card.bloomed .tulip-tap-label {
+  display: none;
+}
+
+/* Wax Seal Love Letter */
+.envelope-card {
+  background: var(--surface);
+  border: 1px solid var(--gold);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.wax-seal {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold), #9c7218);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.45);
+  transition: transform 0.3s ease;
+}
+
+.wax-seal:hover {
+  transform: scale(1.08);
+}
+
+.seal-prompt {
+  font-size: 0.88rem;
+  color: var(--sakura);
+  letter-spacing: 0.05em;
+}
+
+.letter-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  text-align: left;
+  transition: max-height 0.7s ease, opacity 0.6s ease, margin-top 0.5s ease;
+}
+
+.envelope-card.opened .letter-content {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--gold-border);
+}
+
+.envelope-card.opened .seal-prompt {
+  display: none;
+}
+
+.letter-salutation {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sakura);
+  margin-bottom: 1rem;
+}
+
+.letter-body {
+  font-size: 1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+  margin-bottom: 1.5rem;
+}
+
+.letter-signoff {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+}
+
+@media (max-width: 520px) {
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

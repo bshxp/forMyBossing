@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heloooo po mahal!</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌷</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+  <canvas id="petals-canvas"></canvas>
+
+  <nav class="top-bar">
+    <span class="badge">03 MONTHS</span>
+    <div class="controls">
+      <button id="theme-btn" class="btn-outline" title="Switch Black & White Theme">
+        <span id="theme-icon">☀️</span> <span id="theme-label">Light Mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <header class="hero">
+      <p class="eyebrow">CELEBRATING OUR LOVE</p>
+      <h1 class="title">Happy 3rd Monthsary,<br><span id="her-name-display" class="gold-text">My Love</span></h1>
+      <p class="subtitle">Three months of laughter, late-night talks, and watching something beautiful bloom.</p>
+
+      <!-- Interactive Tulip Bouquet -->
+      <div class="bouquet-wrapper" id="bouquet" title="Tap the tulips!">
+        <svg class="tulip-bouquet" viewBox="0 0 260 240" width="240" height="220" aria-label="Tulip Bouquet">
+          <defs>
+            <linearGradient id="sakuraGrad1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffd1dc" />
+              <stop offset="100%" stop-color="#f48fb1" />
+            </linearGradient>
+            <linearGradient id="sakuraGrad2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffb7c5" />
+              <stop offset="100%" stop-color="#e57399" />
+            </linearGradient>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f6e27a" />
+              <stop offset="50%" stop-color="#d4af37" />
+              <stop offset="100%" stop-color="#aa771c" />
+            </linearGradient>
+            <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5c8d6a" />
+              <stop offset="100%" stop-color="#2e4d36" />
+            </linearGradient>
+          </defs>
+
+          <!-- Stems & Leaves -->
+          <g class="sway-slow">
+            <path d="M130 220 Q105 155 75 95" stroke="url(#stemGrad)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M130 220 Q155 155 185 95" stroke="url(#stemGrad)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M130 220 L130 75" stroke="url(#stemGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Leaves -->
+            <path d="M115 185 Q75 155 68 120 Q98 140 115 185 Z" fill="#467554"/>
+            <path d="M145 185 Q185 155 192 120 Q162 140 145 185 Z" fill="#467554"/>
+            <path d="M128 165 Q95 120 105 85 Q125 120 128 165 Z" fill="#5c8d6a"/>
+          </g>
+
+          <!-- Left Tulip -->
+          <g class="tulip-head sway-left" transform="translate(75, 92) rotate(-18)">
+            <path d="M0 0 C-22 -5 -24 -38 -10 -52 C-4 -38 0 -22 0 0 Z" fill="url(#sakuraGrad2)" stroke="url(#goldGrad)" stroke-width="1.2"/>
+            <path d="M0 0 C22 -5 24 -38 10 -52 C4 -38 0 -22 0 0 Z" fill="url(#sakuraGrad2)" stroke="url(#goldGrad)" stroke-width="1.2"/>
+            <path d="M0 2 C-16 -2 -16 -42 0 -58 C16 -42 16 -2 0 2 Z" fill="url(#sakuraGrad1)" stroke="url(#goldGrad)" stroke-width="1.4"/>
+          </g>
+
+          <!-- Right Tulip -->
+          <g class="tulip-head sway-right" transform="translate(185, 92) rotate(18)">
+            <path d="M0 0 C-22 -5 -24 -38 -10 -52 C-4 -38 0 -22 0 0 Z" fill="url(#sakuraGrad2)" stroke="url(#goldGrad)" stroke-width="1.2"/>
+            <path d="M0 0 C22 -5 24 -38 10 -52 C4 -38 0 -22 0 0 Z" fill="url(#sakuraGrad2)" stroke="url(#goldGrad)" stroke-width="1.2"/>
+            <path d="M0 2 C-16 -2 -16 -42 0 -58 C16 -42 16 -2 0 2 Z" fill="url(#sakuraGrad1)" stroke="url(#goldGrad)" stroke-width="1.4"/>
+          </g>
+
+          <!-- Center Main Tulip -->
+          <g class="tulip-head sway-center" transform="translate(130, 74)">
+            <path d="M0 0 C-26 -6 -28 -44 -12 -60 C-5 -44 0 -25 0 0 Z" fill="url(#sakuraGrad2)" stroke="url(#goldGrad)" stroke-width="1.4"/>
+            <path d="M0 0 C26 -6 28 -44 12 -60 C5 -44 0 -25 0 0 Z" fill="url(#sakuraGrad2)" stroke="url(#goldGrad)" stroke-width="1.4"/>
+            <path d="M0 2 C-19 -2 -19 -48 0 -66 C19 -48 19 -2 0 2 Z" fill="url(#sakuraGrad1)" stroke="url(#goldGrad)" stroke-width="1.6"/>
+          </g>
+
+          <!-- Gold Ribbon Bow -->
+          <g transform="translate(130, 195)">
+            <path d="M0 0 C-22 -14 -28 8 0 4 Z" fill="url(#goldGrad)"/>
+            <path d="M0 0 C22 -14 28 8 0 4 Z" fill="url(#goldGrad)"/>
+            <path d="M-3 3 L-14 26 L-7 24 L0 5 Z" fill="url(#goldGrad)"/>
+            <path d="M3 3 L14 26 L7 24 L0 5 Z" fill="url(#goldGrad)"/>
+            <circle cx="0" cy="2" r="4.5" fill="#fff5cc" stroke="#aa771c" stroke-width="1.2"/>
+          </g>
+        </svg>
+        <span class="tap-hint">Tap the tulips for a shower of petals ✨</span>
+      </div>
+    </header>
+
+    <!-- Live Time Counter -->
+    <section class="card counter-section">
+      <h2 class="section-title">Every Second With You</h2>
+      <div class="counter-grid">
+        <div class="time-box">
+          <span id="days" class="time-num">90</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-box">
+          <span id="hours" class="time-num">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <div class="time-box">
+          <span id="minutes" class="time-num">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <div class="time-box">
+          <span id="seconds" class="time-num">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+      <p class="start-date-caption">Since <span id="date-display">August 13, 2026</span></p>
+    </section>
+
+    <!-- Interactive Tulip Love Garden -->
+    <section class="garden-section">
+      <h2 class="section-title">Six Tulips For Six Reasons</h2>
+      <p class="section-sub">Click mo po lalove ko</p>
+      <div class="tulip-grid" id="tulip-grid"></div>
+    </section>
+
+    <!-- Sealed Love Letter -->
+    <section class="letter-section">
+      <div class="envelope-card" id="envelope-card">
+        <div class="wax-seal" id="wax-seal" title="Click to break the seal">
+          <span>🌷</span>
+        </div>
+        <p class="seal-prompt" id="seal-prompt">Tap the gold seal to open your letter</p>
+        <div class="letter-content" id="letter-content">
+          <p class="letter-salutation">Dearest <span id="letter-her-name">My Love</span>,</p>
+          <p id="letter-body" class="letter-body"></p>
+          <p class="letter-signoff">Mahal na mahal kita!<br><span id="your-name-display" class="gold-text">Yours Truly</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
